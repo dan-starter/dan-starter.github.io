@@ -1,1 +1,77 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Containers</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 15px; /* 四边等宽 */
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            border-radius: 15px;
+            width: 80%; /* 长宽比为2:1 */
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 50ms ease-in-out;
+        }
+
+        .container:active {
+            transform: translateY(5px);
+        }
+
+        .container img {
+            width: 48%; /* 正方形图片，宽度占容器一半 */
+            border-radius: 15px;
+        }
+
+        .text {
+            margin-left: 10px;
+            width: 48%;
+            text-align: center;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="playAudio('1.mp3')">
+        <img src="hnb.png" alt="Placeholder Image">
+        <div class="text">做人嘛，开心最重要</div>
+    </div>
+    <div class="container" onclick="playAudio('hnb.mp3')">
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="text">文本2</div>
+    </div>
+    <div class="container" onclick="playAudio('3.mp3')">
+        <img src="https://via.placeholder.com/150" alt="Placeholder Image">
+        <div class="text">文本3</div>
+    </div>
+
+    <audio id="audio1" src="1.mp3"></audio>
+    <audio id="audio2" src="2.mp3"></audio>
+    <audio id="audio3" src="3.mp3"></audio>
+
+    <script>
+        function playAudio(src) {
+            const audio = new Audio(src);
+            audio.play();
+        }
+    </script>
+</body>
+</html>
+
